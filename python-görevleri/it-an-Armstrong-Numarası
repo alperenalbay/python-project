@@ -11,4 +11,4 @@ while temp > 0:
 if num == sum:
    print(num,"is an Armstrong number")
 else:
-   print(num,"is not an Armstrong number")
+   print(num," It is an invalid entry. Don't use non-numeric, float, or negative values!")
