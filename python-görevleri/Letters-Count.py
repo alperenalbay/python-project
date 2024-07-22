@@ -1,10 +1,10 @@
 def cümle(str1):
-    dict = {}
-    for i in str1:
-        keys = dict.keys()
-        if i in keys:
-            dict[i] += 1
+    frekans = {}
+    for karakter in str1:
+        if karakter in frekans:
+            frekans[karakter] += 1
         else:
-            dict[i] = 1
-    return dict
-print(cümle('Su aygırı bize koşuyor!'))
+            frekans[karakter] = 1
+    return frekans
+
+print(cümle(input("Cümleyi giriniz: ")))
