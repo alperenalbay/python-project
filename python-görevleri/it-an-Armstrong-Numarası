@@ -1,14 +1,41 @@
-num = int(input("Enter a number: "))
+def is_armstrong_number(num):
+    """Verilen bir sayının Armstrong sayısı olup olmadığını kontrol eder."""
+    sum = 0
+    temp = num
+    while temp > 0:
+        digit = temp % 10
+        sum += digit ** 3
+        temp //= 10
+    return num == sum
 
-sum = 0
 
-temp = num
-while temp > 0:
-   digit = temp % 10
-   sum += digit ** 3
-   temp //= 10
+def get_user_input():
+    """Kullanıcıdan geçerli bir pozitif tam sayı alır."""
+    while True:
+        try:
+            num = int(input("Lütfen pozitif bir tam sayı giriniz: "))
+            if num < 0:
+                print("Geçersiz giriş. Lütfen pozitif bir tam sayı giriniz.")
+            else:
+                return num
+        except ValueError:
+            print("Geçersiz giriş. Lütfen sayısal bir değer giriniz.")
 
-if num == sum:
-   print(num,"is an Armstrong number")
-else:
-   print(num," It is an invalid entry. Don't use non-numeric, float, or negative values!")
+
+def main():
+    while True:
+        num = get_user_input()
+        if is_armstrong_number(num):
+            print(f"{num} bir Armstrong sayısıdır.")
+        else:
+            print(f"{num} bir Armstrong sayısı değildir.")
+
+        # Kullanıcıya tekrar denemek isteyip istemediğini soralım
+        again = input("Başka bir sayı denemek ister misiniz? (Evet için 'e', Hayır için 'h'): ").lower()
+        if again != 'e':
+            print("Programdan çıkılıyor.")
+            break
+
+
+if __name__ == "__main__":
+    main()
