@@ -1,0 +1,52 @@
+import random
+
+def get_names():
+    names = []
+    print("İsim Çekilişine Hoşgeldiniz!")
+    print("Çekilişe katılacak isimleri girin. Bitirdiğinizde 'q' tuşuna basın.")
+    while True:
+        name = input("İsim: ").strip()
+        if name.lower() == 'q':
+            break
+        elif name:
+            names.append(name)
+    return names
+
+def draw_names(names):
+    if not names:
+        print("İsim listesi boş. Lütfen önce isim ekleyin.")
+        return
+    print("Kaç kişilik çekiliş yapmak istersiniz?")
+    try:
+        number_of_draws = int(input("Kişi sayısı: "))
+        if number_of_draws > len(names):
+            print("Çekiliş sayısı, isim listesindeki kişi sayısından fazla olamaz.")
+        else:
+            winners = random.sample(names, number_of_draws)
+            print("Kazananlar:")
+            for winner in winners:
+                print(winner)
+    except ValueError:
+        print("Lütfen geçerli bir sayı girin.")
+
+def main():
+    names = get_names()
+    while True:
+        print("\nİsim Çekilişi")
+        print("1. İsimleri Gir")
+        print("2. Çekilişi Yap")
+        print("3. Çıkış")
+        choice = input("Seçiminiz: ").strip()
+
+        if choice == '1':
+            names = get_names()
+        elif choice == '2':
+            draw_names(names)
+        elif choice == '3':
+            print("Çıkış yapılıyor...")
+            break
+        else:
+            print("Geçersiz seçim. Lütfen tekrar deneyin.")
+
+if __name__ == "__main__":
+    main()
